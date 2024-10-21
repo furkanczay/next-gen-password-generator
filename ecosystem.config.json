@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "pg",
+            "script": "npm",
+            "args" : "start"
+        }
+    ]
+}
