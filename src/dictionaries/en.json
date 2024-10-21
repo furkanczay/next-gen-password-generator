@@ -1,0 +1,15 @@
+{
+    "title": "Czaylabs | Random Password Generator",
+    "description": "Random password generator helps you create strong and secure passwords. Password generator helps you create secure passwords.",
+    "passwordLength": "Password Length",
+    "uppercase": "Uppercase (A-Z)",
+    "lowercase": "Lowercase (a-z)",
+    "numbers": "Numbers (0-9)",
+    "symbols": "Symbols (!@#)",
+    "weak": "Weak",
+    "medium": "Medium",
+    "strong": "Strong",
+    "refreshMessage": "New password created",
+    "copyMessage": "Password copied to clipboard",
+    "lastUpdate": "Last Update"
+}

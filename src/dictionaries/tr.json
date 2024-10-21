@@ -1,0 +1,15 @@
+{
+    "title": "Czaylabs | Rasgele Şifre Oluşturucu",
+    "description": "Rasgele şifre oluşturucu, güçlü ve güvenli şifreler oluşturmanıza yardımcı olur. Şifre oluşturucu, güvenli şifreler oluşturmanıza yardımcı olur.",
+    "passwordLength": "Şifre Uzunluğu",
+    "uppercase": "Büyük Harfler (A-Z)",
+    "lowercase": "Küçük Harfler (a-z)",
+    "numbers": "Rakamlar (0-9)",
+    "symbols": "Semboller (!@#)",
+    "weak": "Zayıf",
+    "medium": "Orta",
+    "strong": "Güçlü",
+    "refreshMessage": "Yeni şifre oluşturuldu",
+    "copyMessage": "Şifre panoya kopyalandı",
+    "lastUpdate": "Son Güncelleme"
+}
