@@ -51,7 +51,7 @@ export default function Features({ lang }: { lang: Locale }) {
         }
     }
     return(
-        <div className="bg-gradient-to-t from-blue-400/20 to-blue-700/10 py-10 px-5 md:px-20 text-center">
+        <div className="bg-gradient-to-t from-zinc-100/20 to-zinc-400/10 py-10 px-5 md:px-20 text-center rounded-xl border border-zinc-300 dark:border-zinc-700">
             <h1 className="text-3xl font-bold mt-10">{features[lang].title}</h1>
             <p className="my-10">{features[lang].description}</p>
             <div className="grid grid-cols-1 md:grid-cols-3 md:gap-5">

@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer(){
     const date = new Date();
     return(
-        <footer className="bg-gray-800 text-white text-center py-5 flex flex-col gap-5 md:flex-row justify-between items-center px-5 md:px-20">
+        <footer className="bg-gray-800 text-white text-center py-5 flex flex-col gap-5 mt-10 rounded-t-xl md:flex-row justify-between items-center px-5 md:px-20">
             <div>
                 <p>{date.getFullYear()} Czaylabs | Tüm Hakları Saklıdır.</p>
             </div>

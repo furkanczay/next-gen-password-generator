@@ -32,23 +32,25 @@ export default function RootLayout({
         className={`${font.className} antialiased`}
       >
         <Providers>
-            <div className="flex justify-between items-center px-5 md:px-20 my-10">
-                <Link href="/" className="inline-flex gap-1 items-end">
-                    <span className="text-4xl font-bold">CzayLabs</span> 
-                    <div className="text-md">
-                        <span className="text-yellow-400 text-md">P</span>
-                        <span className="text-xs">assword</span> 
-                        <span className="text-yellow-400">G</span>
-                        <span className="text-xs">enerator</span>
-                    </div>
-                </Link>
-                <div className="inline-flex gap-5 items-center">
-                    <LocaleSwitcher locale={params.lang} />
-                    <ThemeChanger />
-                </div>
+            <div className="max-w-screen-xl mx-auto">
+              <div className="flex justify-between items-center px-5 md:px-20 my-10">
+                  <Link href="/" className="inline-flex flex-col gap-1 items-center sm:flex-row sm:items-end">
+                      <span className="text-4xl font-bold">CzayLabs</span> 
+                      <div className="text-md">
+                          <span className="text-yellow-400 text-md">P</span>
+                          <span className="text-xs">assword</span> 
+                          <span className="text-yellow-400">G</span>
+                          <span className="text-xs">enerator</span>
+                      </div>
+                  </Link>
+                  <div className="inline-flex gap-5 items-center">
+                      <LocaleSwitcher locale={params.lang} />
+                      <ThemeChanger />
+                  </div>
+              </div>
+              {children}
+              <Footer />
             </div>
-            {children}
-            <Footer />
             <Toaster position="top-right" />
         </Providers>
       </body>
