@@ -2,7 +2,8 @@ import Features from "@/components/features";
 import PasswordGenerate from "@/components/PasswordGenerate";
 import { getDictionary, Locale } from "@/lib/utils";
 
-export default async function Home({ params: { lang } }: Readonly<{ params: { lang: Locale } }>) {
+export default async function Home({ params }: Readonly<{ params: Promise<{ lang: Locale }> }>) {
+  const { lang } = await params
   const dict = await getDictionary(lang);
   return (
     <div>

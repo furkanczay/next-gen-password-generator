@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import AnimatedShinyText from "./ui/animated-shiny-text";
 import { toast } from "sonner";
 import { TbLockCheck, TbLockDown, TbLockExclamation } from "react-icons/tb";
+import { Loader2 } from "lucide-react";
 
 interface PasswordGenerateProps {
     dict: {
@@ -28,6 +29,7 @@ interface PasswordGenerateProps {
 
 export default function PasswordGenerate({ dict }: PasswordGenerateProps) {
     const [length, setLength] =useState(12);
+    const [isMounted, setIsMounted] = useState(false);
     const [password, setPassword] = useState("");
     const [weakness, setWeakness] = useState({strength: "", bg: ""});
     const [refresh, setRefresh] = useState(false);
@@ -104,6 +106,7 @@ export default function PasswordGenerate({ dict }: PasswordGenerateProps) {
 
         setPassword(password);
         testWeakness(password);
+        setIsMounted(true);
     }, [length, refresh, useUppercase, useLowercase, useNumbers, useSpecialChars]);
 
     const handleRefresh = () => {
@@ -142,24 +145,30 @@ export default function PasswordGenerate({ dict }: PasswordGenerateProps) {
             <div className="col-span-10 space-y-10">
                 <div id="password-area">
                     <div className="py-2 px-3 rounded-xl border border-gray-300">
-                        <div className="flex justify-between items-center">
-                            <div className="inline-flex gap-7 items-center">
-                            <div className="select-none">
-                                {weakness.strength === dict.weak && <TbLockDown className="w-6 h-6" />}
-                                {weakness.strength === dict.medium && <TbLockExclamation className="w-6 h-6" />}
-                                {weakness.strength === dict.strong && <TbLockCheck className="w-6 h-6" />}
+                        {!isMounted ? (
+                            <div className="flex flex-col items-center justify-center">
+                                <Loader2 className="animate-spin w-6 h-6" />
                             </div>
-                                <AnimatedShinyText className="text-xs sm:text-md md:text-lg text-center">
-                                    {password}
-                                </AnimatedShinyText>
+                        ) : (
+                            <div className="flex justify-between items-center">
+                                <div className="inline-flex gap-7 items-center">
+                                <div className="select-none">
+                                    {weakness.strength === dict.weak && <TbLockDown className="w-6 h-6" />}
+                                    {weakness.strength === dict.medium && <TbLockExclamation className="w-6 h-6" />}
+                                    {weakness.strength === dict.strong && <TbLockCheck className="w-6 h-6" />}
+                                </div>
+                                    <AnimatedShinyText className="text-xs sm:text-md md:text-lg text-center">
+                                        {password}
+                                    </AnimatedShinyText>
+                                </div>
+                                <div className="inline-flex items-center gap-4">
+                                    <span className={cn(weakness?.bg, "py-1 px-3 rounded-md text-xs")}>{weakness?.strength}</span>
+                                    <button onClick={handleCopy} className="text-lg font-semibold">{
+                                        copied ? (<LuClipboardCheck />) : (<LuClipboardCopy />)}</button>
+                                    <button onClick={handleRefresh} className="text-lg font-semibold"><LuRefreshCcw /></button>
+                                </div>
                             </div>
-                            <div className="inline-flex items-center gap-4">
-                                <span className={cn(weakness?.bg, "py-1 px-3 rounded-md text-xs")}>{weakness?.strength}</span>
-                                <button onClick={handleCopy} className="text-lg font-semibold">{
-                                    copied ? (<LuClipboardCheck />) : (<LuClipboardCopy />)}</button>
-                                <button onClick={handleRefresh} className="text-lg font-semibold"><LuRefreshCcw /></button>
-                            </div>
-                        </div>
+                        )}
                     </div>
                 </div>
                 <div id="generate-controls" className="space-y-10">
@@ -167,7 +176,7 @@ export default function PasswordGenerate({ dict }: PasswordGenerateProps) {
                         <div className="">
                             <div className="inline-flex gap-1 items-center mb-3 sm:mb-0"><span>{dict.passwordLength}: </span> <strong>{length}</strong></div>
                         </div>
-                        <div className="flex-grow flex gap-3 items-center">
+                        <div className="grow flex gap-3 items-center">
                             <Button variant="secondary" size="icon" disabled={length === 1} onClick={handleDecrement} className={cn("", length === 1 && "text-muted-foreground")}>
                                 -
                             </Button>

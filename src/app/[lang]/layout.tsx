@@ -19,20 +19,22 @@ export const metadata: Metadata = {
   description: "Create strong and secure passwords to keep your account safe online.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params
 }: Readonly<{
   children: React.ReactNode,
-  params: { lang: Locale }
+  params: Promise<{ lang: Locale }>
 }>) {
+
+  const { lang } = await params;
   return (
-    <html lang={params.lang}>
+    <html lang={lang} suppressHydrationWarning>
       <body
         className={`${font.className} antialiased`}
       >
         <Providers>
-            <div className="max-w-screen-xl mx-auto">
+            <div className="max-w-(--breakpoint-xl) mx-auto">
               <div className="flex justify-between items-center px-5 md:px-20 my-10">
                   <Link href="/" className="inline-flex flex-col gap-1 items-center sm:flex-row sm:items-end">
                       <span className="text-4xl font-bold">CzayLabs</span> 
@@ -44,7 +46,7 @@ export default function RootLayout({
                       </div>
                   </Link>
                   <div className="inline-flex gap-5 items-center">
-                      <LocaleSwitcher locale={params.lang} />
+                      <LocaleSwitcher locale={lang} />
                       <ThemeChanger />
                   </div>
               </div>
