@@ -1,7 +1,8 @@
 import { termsOfConditions } from "@/config/terms-and-conditions";
 import { Locale } from "@/lib/utils";
 
-export default function TermsAndConditions({ params: { lang } }: Readonly<{ params: { lang: Locale } }>) {
+export default async function TermsAndConditions({ params }: Readonly<{ params: Promise<{ lang: Locale }> }>) {
+    const { lang } = await params;
     const document = termsOfConditions[lang];
     return(
         <div className="flex flex-col gap-5 my-52">

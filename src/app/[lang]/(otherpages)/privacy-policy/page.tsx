@@ -1,6 +1,7 @@
 import { privacyPolicy } from "@/config/privacy-policy";
 import { Locale } from "@/lib/utils";
-export default function PrivacyPolicyPage({ params: { lang } }: Readonly<{ params: { lang: Locale } }>) {
+export default async function PrivacyPolicyPage({ params }: Readonly<{ params: Promise<{ lang: Locale }> }>) {
+    const { lang } = await params;
     const document = privacyPolicy[lang];
     return(
         <div className="flex flex-col gap-5 my-52">
